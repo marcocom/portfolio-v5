@@ -1,0 +1,47 @@
+@import './reset.less';
+@import './typography.less';
+@import './buttons.less';
+
+html, body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.experience-more-app {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  text-align: center;
+  svg {
+    max-width: 100px;
+    max-height: 100px;
+  }
+  .app-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    overflow: hidden;
+    > section {
+      flex: 1;
+      overflow: auto;
+    }
+  }
+  .container {
+    max-width: 500px;
+    padding: 0 15px;
+    margin: 0 auto;
+  }
+}
+
+

@@ -1,0 +1,27 @@
+@import '../../theme/intel-colors.less';
+
+.FramePicker {
+  header {
+    padding: 15px 0;
+    background-color: @intel-blue;
+    h1,
+    p {
+      color: white;
+      margin-bottom: 0;
+    }
+  }
+  .choices {
+    max-width: 325px;
+    margin: 0 auto;
+    padding: 15px;
+    img {
+      max-width: 100%;
+    }
+    figure {
+      margin: 7px 0;
+      &:hover .indicator {
+        background-color: @lightest-gray;
+      }
+    }
+  }
+}

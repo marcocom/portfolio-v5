@@ -1,0 +1,23 @@
+@import '../../theme/intel-colors.less';
+@import '../../theme/mixins.less';
+
+.settings-option {
+  width: 100%;
+  background-color: #FFF;
+  padding: 20px 20px;
+  margin: -15px 0 0;
+  text-align: left;
+  h5 {
+    font-size: 15px;
+    line-height: 24px;
+
+    &.title {
+      color: @charcoal;
+      font-weight: 500;
+      width: 60%;
+      display: inline-block;
+    }
+  }
+
+  .toggle-switch(@intel-blue);
+}

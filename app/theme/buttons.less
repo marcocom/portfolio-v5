@@ -1,0 +1,39 @@
+button {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  border: 0;
+  border-spacing: 0;
+  color: @intel-blue;
+  font-size: 14px;
+  appearance: none;
+  line-height: normal;
+  cursor: pointer;
+  user-select: none;
+  background: transparent;
+  font-family: 'intel-clear';
+}
+
+button.intel {
+  color: white;
+  border: 1px solid @intel-blue;
+  background: @intel-blue;
+  padding: 11px 15px;
+  margin: 7px;
+  border-radius: 1px;
+  &.white {
+    color: @charcoal;
+    border-color: white;
+    background-color: white;
+  }
+  &.outline {
+    color: @dark-gray;
+    border-color: @dark-gray;
+    background-color: transparent;
+  }
+  &.white.outline {
+    color: white;
+    border-color: white;
+    background-color: transparent;
+  }
+}

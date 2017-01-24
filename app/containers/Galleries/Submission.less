@@ -1,0 +1,64 @@
+@import '../../theme/intel-colors.less';
+
+.submission-page {
+  .submission {
+    width: 100%;
+    background-color: @charcoal;
+    img {
+      margin: 0 auto;
+      max-width: 960px;
+      background-size: cover;
+      background-position: center;
+      &:after {
+        content: ' ';
+        display: block;
+        padding-bottom: 56%;
+      }
+      @media (max-width: 960px) {
+        max-width: 100%;
+      }
+    }
+  }
+  .container {
+    max-width: 420px;
+    .original-frame {
+      margin: 15px 0;
+      border-bottom: 1px solid @charcoal;
+      display: flex;
+      align-items: center;
+      figure {
+        width: 260px;
+        background-size: cover;
+        background-position: center;
+        &:after {
+          content: ' ';
+          display: block;
+          padding-bottom: 56%;
+        }
+      }
+      .text {
+        flex: 1;
+        padding-left: 15px;
+        text-align: left;
+        .name {
+          font-weight: 400;
+        }
+        h2 {
+          line-height: 1.4
+        }
+      }
+    }
+    nav {
+      display: flex;
+      margin-top: 8px;
+      margin-bottom: 52px;
+      button {
+        flex: 1;
+      }
+    }
+  }
+  header {
+    padding: 30px;
+    border-top: 8px solid @lightest-gray;
+  }
+}

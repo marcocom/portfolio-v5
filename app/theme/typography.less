@@ -1,0 +1,42 @@
+@import './intel-colors.less';
+
+@font-face {
+  font-family: "intel-clear";
+  src: url("./fonts/intel-clear-latin.ttf");
+  font-weight: normal;
+  font-style: normal
+}
+@font-face {
+  font-family: "intel-clear";
+  src: url("./fonts/intel-clear-latin-light.ttf");
+  font-weight: 200;
+  font-style: normal
+}
+
+body {
+  font-family: 'intel-clear';
+
+  h1, h2, h3, h4, h5, h6, p {
+    color: @charcoal;
+    margin: 0;
+    padding: 0;
+    font-weight: 200;
+    line-height: 1.25;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1 {
+    font-size: 21px;
+    line-height: 20px;
+  }
+  h2 { font-size: 18px; }
+  strong { font-weight: 400; }
+
+  p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 15px;
+    color: @gray;
+  }
+  a { text-decoration: none; }
+}
