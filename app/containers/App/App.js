@@ -19,7 +19,7 @@ export default class App extends Component {
     const intro = /^\/$/.exec(this.props.location.pathname);
     const editing = /frame.*design/.exec(this.props.location.pathname);
     return (
-      <div className="experience-more-app">
+      <div className="portfolio-app">
         <Helmet {...config.app.head}/>
         <div className="app-container">
           { !editing && <Header/> }

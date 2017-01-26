@@ -6,7 +6,7 @@ function getRandomIntInRange(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-const s3bucketURL = 'http://experiencemore-frontend-assets.s3-website-us-west-2.amazonaws.com';
+const srcURL = 'http://experiencemore-frontend-assets.s3-website-us-west-2.amazonaws.com';
 
 function createFrame(number) {
   return {
@@ -14,12 +14,12 @@ function createFrame(number) {
     frameNumber: number,
     submissions: [],
     images: {
-      'w1920': `${s3bucketURL}/brady-frame-${number}-w1920.jpg`,
-      'w960': `${s3bucketURL}/brady-frame-${number}-w960.jpg`,
-      'w480': `${s3bucketURL}/brady-frame-${number}-w480.jpg`,
-      'w320': `${s3bucketURL}/brady-frame-${number}-w320.jpg`,
-      'w240': `${s3bucketURL}/brady-frame-${number}-w240.jpg`,
-      'w160': `${s3bucketURL}/brady-frame-${number}-w160.jpg`
+      'w1920': `${srcURL}/brady-frame-${number}-w1920.jpg`,
+      'w960': `${srcURL}/brady-frame-${number}-w960.jpg`,
+      'w480': `${srcURL}/brady-frame-${number}-w480.jpg`,
+      'w320': `${srcURL}/brady-frame-${number}-w320.jpg`,
+      'w240': `${srcURL}/brady-frame-${number}-w240.jpg`,
+      'w160': `${srcURL}/brady-frame-${number}-w160.jpg`
     }
   }
 }
@@ -43,12 +43,12 @@ function createSubmission({
     author,
     location,
     images: {
-      'w1920': `${s3bucketURL}/brady-submission-${frameNumber}-w1920.jpg`,
-      'w960': `${s3bucketURL}/brady-submission-${frameNumber}-w960.jpg`,
-      'w480': `${s3bucketURL}/brady-submission-${frameNumber}-w480.jpg`,
-      'w320': `${s3bucketURL}/brady-submission-${frameNumber}-w320.jpg`,
-      'w240': `${s3bucketURL}/brady-submission-${frameNumber}-w240.jpg`,
-      'w160': `${s3bucketURL}/brady-submission-${frameNumber}-w160.jpg`
+      'w1920': `${srcURL}/brady-submission-${frameNumber}-w1920.jpg`,
+      'w960': `${srcURL}/brady-submission-${frameNumber}-w960.jpg`,
+      'w480': `${srcURL}/brady-submission-${frameNumber}-w480.jpg`,
+      'w320': `${srcURL}/brady-submission-${frameNumber}-w320.jpg`,
+      'w240': `${srcURL}/brady-submission-${frameNumber}-w240.jpg`,
+      'w160': `${srcURL}/brady-submission-${frameNumber}-w160.jpg`
     }
   };
 }
@@ -70,7 +70,7 @@ function createUser() {
 }
 
 function createNavFrame(i){
-  return `${s3bucketURL}/brady-frame-${i}-w160.jpg`;
+  return `${srcURL}/brady-frame-${i}-w160.jpg`;
 }
 
 const appData = {
@@ -79,6 +79,9 @@ const appData = {
   users: [],
   navframes: [],
 };
+
+
+
 
 // createFrames
 for (let number = 1; number <= 98; number++) {

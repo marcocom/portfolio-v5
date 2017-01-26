@@ -42,29 +42,7 @@ export default class Intro extends Component {
     return (
       <section className="intro">
         <Helmet title="Intro"/>
-        <div className="images">
-          { this.createIntroImages() }
-        </div>
-        <div className="text">
-          <div className="container">
-            <h2>#ExperienceMore with Tom Brady and Intel 360 Replay</h2>
-            <p>
-              Intel 360 Replay technology lets you experience more of your
-              favorite sports action. Use our tech and your creativity to
-              create a social, crowdsourced video featuring the game’s greatest.
-              Are you ready to #ExperienceMore?
-            </p>
-            <nav>
-              <Link to="/player">
-                <button className="intel outline">Watch Full Video</button>
-              </Link>
-              <Link to="/frame/select">
-                <button className="intel">Design A Frame</button>
-              </Link>
-            </nav>
-            <p>Already have an account? <Link to="/profile">Sign in</Link></p>
-          </div>
-        </div>
+        <p>Already have an account? <Link to="/profile">Sign in</Link></p>
       </section>
     );
   }

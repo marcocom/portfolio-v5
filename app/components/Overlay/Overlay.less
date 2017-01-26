@@ -1,4 +1,4 @@
-@import '../../theme/intel-colors.less';
+@import '../../theme/vars.less';
 
 .overlay {
   position: absolute;
@@ -9,7 +9,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: fadeout(@intel-blue, 10%);
+  background-color: fadeout(@medium-blue, 10%);
   transform: translate3d(0, 120%, 0);
   transition: transform 200ms ease-out;
   z-index: 600;

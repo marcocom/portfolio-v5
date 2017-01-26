@@ -1,5 +1,13 @@
-# ExperienceMore frontend
+# Portfolio 2017
 
 Built and maintained by:
-  * Adam Trimble
   * Marco Comparato
+  
+  
+Required libs (brew installed):
+* giflib
+* glib
+* jpeg
+* pixman
+* zeromq
+* libpng

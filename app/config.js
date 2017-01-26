@@ -14,20 +14,20 @@ module.exports = Object.assign({
   host: process.env.HOST || 'localhost',
   port: process.env.PORT || 3000,
   app: {
-    title: '#ExperienceMore',
+    title: 'marco comparato :: design and technology and you and me',
     description: 'Experience More lets you draw and create a new video with Tom Brady',
     head: {
-      titleTemplate: '#ExperienceMore: %s',
+      titleTemplate: '#marcocomparato: %s',
       meta: [
-        {name: 'description', content: 'Experience More lets you draw and create a new video with Tom Brady'},
+        {name: 'description', content: 'lorem ipsum dolor sit amet.'},
         {charset: 'utf-8'},
-        {property: 'og:site_name', content: 'Intel: #ExperienceMore'},
-        {property: 'og:title', content: 'Intel: #ExperienceMore'},
+        {property: 'og:site_name', content: 'Marco Comparato'},
+        {property: 'og:title', content: 'Portfolio'},
         {property: 'og:locale', content: 'en_US'},
-        {property: 'og:description', content: 'Experience More lets you draw and create a new video with Tom Brady'},
+        {property: 'og:description', content: 'Marco Comparato Design and Development'},
         {property: 'og:card', content: 'summary'},
-        {property: 'og:site', content: '@intel'},
-        {property: 'og:creator', content: '@intel'},
+        {property: 'og:site', content: '@marcocomparato'},
+        {property: 'og:creator', content: '@marcocomparato'},
       ]
     }
   },
