@@ -9,6 +9,10 @@ const environment = {
   }
 }[process.env.NODE_ENV || 'development'];
 
+const urlMap = {
+  
+};
+
 
 module.exports = Object.assign({
   host: process.env.HOST || 'localhost',
