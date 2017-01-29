@@ -23,7 +23,7 @@ export default class Galleries extends Component {
   }
 
   render() {
-    const { favorites, funniest, artworks, weird } = this.props.galleryPreviews;
+    const { favorites } = this.props.galleryPreviews;
     return (
       <section>
         <Helmet title="Gallery"/>
@@ -31,42 +31,13 @@ export default class Galleries extends Component {
         { favorites &&
             <div className="galleryListItem">
               <div className="container">
-                <h1>Featured Favorites</h1>
-                <p>It was hard to choose a favorite few from all of your incredible submissions. That’s why we’ll pick a new set of frames next week. Check back to see if yours made the cut.</p>
+                <h1>Lorem Ipsum</h1>
+                <p>Lorem ipsum dolor sit amet.</p>
                 <GalleryPreview name="favorites" count={favorites.length} submissions={favorites}/>
               </div>
             </div>
         }
 
-        { funniest &&
-            <div className="galleryListItem">
-              <div className="container">
-                <h1>Funniest Frames</h1>
-                <p>They’ll make you chuckle. They’ll make you laugh out loud. And they might make you spew your morning coffee all over your co-workers. These are our funniest frames.</p>
-                <GalleryPreview name="funniest" count={funniest.length} submissions={funniest}/>
-              </div>
-            </div>
-        }
-
-        { artworks &&
-            <div className="galleryListItem">
-              <div className="container">
-                <h1>Works of Art</h1>
-                <p>It’s amazing what some of you can create with just your phone and a finger. These frames showcase the impressive creativity. We’re already printing them to hang on our fridge.</p>
-                <GalleryPreview name="artworks" count={artworks.length} submissions={artworks}/>
-              </div>
-            </div>
-        }
-
-        { weird &&
-            <div className="galleryListItem">
-              <div className="container">
-                <h1>Lets Get Weird</h1>
-                <p>The title says it all. You’re one weird, wild community. And we love that about you.</p>
-                <GalleryPreview name="weird" count={weird.length} submissions={weird}/>
-              </div>
-            </div>
-        }
       </section>
     );
   }

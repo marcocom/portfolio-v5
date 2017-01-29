@@ -28,15 +28,8 @@ export default (store) => {
       <IndexRoute component={Intro}/>
       <Route path="galleries" components={Galleries}/>
       <Route path="galleries/:galleryId" components={Gallery}/>
-      <Route path="frame/select" components={FramePicker}/>
       <Route path="frame/:frameNumber">
-        <Route path="design" components={FrameDesign}/>
-        <Route path="download" components={FrameDownload}/>
         <Route path="submission/:submissionId" components={Submission}/>
-      </Route>
-      <Route path="player" components={Player}/>
-      <Route onEnter={checkLogin}>
-        <Route path="profile" components={Profile}/>
       </Route>
       { /* Catch all route */ }
       <Route path="*" components={NotFound} status={404} />

@@ -9,11 +9,6 @@ const environment = {
   }
 }[process.env.NODE_ENV || 'development'];
 
-const urlMap = {
-  
-};
-
-
 module.exports = Object.assign({
   host: process.env.HOST || 'localhost',
   port: process.env.PORT || 3000,
@@ -36,17 +31,8 @@ module.exports = Object.assign({
     }
   },
   api: {
-    user: environment.isProduction ?
-    'https://cnlss9zahk.execute-api.us-west-2.amazonaws.com/prod/user' :
-    'https://cnlss9zahk.execute-api.us-west-2.amazonaws.com/dev/user',
-    frames: environment.isProduction ?
-    'http://development.nkrbk8fmmp.us-west-2.elasticbeanstalk.com' :
-    'http://localhost:3004',
     submissions: environment.isProduction ?
-    'http://development.nkrbk8fmmp.us-west-2.elasticbeanstalk.com' :
+    '/data' :
     'http://localhost:3004',
-  },
-  uploadBuckets: {
-    submissions: 'submissions-source-dev',
   },
 }, environment);

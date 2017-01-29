@@ -14,7 +14,7 @@ import './Intro.less';
   
   dispatch => bindActionCreators(IntroActions, dispatch)
 )
-export default class Intro extends Component {
+export default class Intro extends Component {18
   static propTypes = {
     activeFrame: PropTypes.number.isRequired,
     incrementActiveFrame: PropTypes.func.isRequired,

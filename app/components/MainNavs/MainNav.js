@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router';
 import {Icon} from 'components';
-import './TabNav.less';
+import './MainNav.less';
 
-export default class TabNav extends Component {
+export default class MainNav extends Component {
   render() {
     return (
       <nav className="TabBar">

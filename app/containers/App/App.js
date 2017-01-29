@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import Helmet from 'react-helmet';
 // import { isLoaded as isAuthLoaded, load as loadAuth, logout } from 'redux/reducers/auth';
-import {Header, TabNav, Overlay} from 'components';
+import {Header, MainNav, Overlay} from 'components';
 import config from 'config';
 import 'theme/theme.less';
 
@@ -17,14 +17,14 @@ export default class App extends Component {
 
   render() {
     const intro = /^\/$/.exec(this.props.location.pathname);
-    const editing = /frame.*design/.exec(this.props.location.pathname);
+    // const editing = /frame.*design/.exec(this.props.location.pathname);
     return (
       <div className="portfolio-app">
         <Helmet {...config.app.head}/>
         <div className="app-container">
-          { !editing && <Header/> }
+          <Header/>
           {this.props.children}
-          { !intro && <TabNav/> }
+          <MainNav/>
         </div>
         <Overlay/>
       </div>
