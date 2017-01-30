@@ -24,25 +24,22 @@ const router = (
     }))}
   />
 );
-
 ReactDOM.render(
   <Provider store={store} key="provider">
     { router }
-    
   </Provider>,
   document.getElementById('app')
 );
-
 if (process.env.NODE_ENV === 'development' && !window.devToolsExtension) {
-    window.React = React; // enable debugger
-    const DevTools = require('containers/DevTools/DevTools');
-    ReactDOM.render(
-        <Provider store={store} key="provider">
-        <div>
-            { router }
-            <DevTools/>
-        </div>
-        </Provider>,
-        document.getElementById('app')
-    );
+  window.React = React; // enable debugger
+  const DevTools = require('containers/DevTools/DevTools');
+  ReactDOM.render(
+    <Provider store={store} key="provider">
+    <div>
+      { router }
+      <DevTools/>
+    </div>
+    </Provider>,
+    document.getElementById('app')
+  );
 }
