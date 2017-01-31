@@ -8,7 +8,7 @@ export default class Header extends Component {
     return (
       <nav className="header">
         <Link to="/">
-          <Icon name="logo"/>
+          <Icon name="coffee"/>
         </Link>
         <a className="microsite" href="mailto:marco@marcocomparato.com">Email Me</a>
       </nav>

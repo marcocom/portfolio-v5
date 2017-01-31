@@ -8,19 +8,19 @@ export default class MainNav extends Component {
     return (
       <nav className="TabBar">
         <Link to="/galleries" className="browse" activeClassName="active">
-          <Icon name="browse"/>
+          <Icon name="gear"/>
           <span>Gallery</span>
         </Link>
         <Link to="/player" className="player" activeClassName="active">
-          <Icon name="play"/>
+          <Icon name="gear"/>
           <span>Video</span>
         </Link>
         <Link to="/frame/select" className="design" activeClassName="active">
-          <Icon name="design"/>
+          <Icon name="gear"/>
           <span>Design</span>
         </Link>
         <Link to="/profile" className="profile" activeClassName="active">
-          <Icon name="profile"/>
+          <Icon name="gear"/>
           <span>Profile</span>
         </Link>
       </nav>

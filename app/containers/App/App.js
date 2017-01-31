@@ -16,7 +16,7 @@ export default class App extends Component {
   };
 
   render() {
-    const intro = /^\/$/.exec(this.props.location.pathname);
+    const intro = /^\/$/.exec(this.props.location.pathname); //is intro page
     // const editing = /frame.*design/.exec(this.props.location.pathname);
     return (
       <div className="portfolio-app">
@@ -24,7 +24,7 @@ export default class App extends Component {
         <div className="app-container">
           <Header/>
           {this.props.children}
-          <MainNav/>
+          {!intro && <MainNav/>}
         </div>
         <Overlay/>
       </div>

@@ -1,6 +1,5 @@
 import React from 'react';
 import {Route, IndexRoute} from 'react-router';
-import {activateOverlay} from 'redux/reducers/overlay';
 import {
   App,
   Galleries,
@@ -9,9 +8,12 @@ import {
   NotFound,
   Submission,
 } from 'containers';
-export default () => {
-  return (
-    <Route path="/" component={App}>
+function onRouteChange(e) {
+  console.log('ONROUTECHANGE - e:', e);
+}
+export default () =>
+  (
+    <Route path="/" component={App} onChange={onRouteChange}>
       <IndexRoute component={Intro}/>
       <Route path="galleries" components={Galleries}/>
       <Route path="galleries/:galleryId" components={Gallery}/>
@@ -20,5 +22,4 @@ export default () => {
       </Route>
       <Route path="*" components={NotFound} status={404} />
     </Route>
-  );
-};
+);
