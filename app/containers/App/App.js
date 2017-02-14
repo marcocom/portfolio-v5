@@ -24,7 +24,7 @@ export default class App extends Component {
         <div className="app-container">
           <Header/>
           {this.props.children}
-          {!intro && <MainNav/>}
+          <MainNav/>
         </div>
         <Overlay/>
       </div>

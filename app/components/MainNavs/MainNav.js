@@ -4,24 +4,21 @@ import {Icon} from 'components';
 import './MainNav.less';
 
 export default class MainNav extends Component {
+  
   render() {
     return (
       <nav className="TabBar">
         <Link to="/galleries" className="browse" activeClassName="active">
           <Icon name="gear"/>
-          <span>Gallery</span>
+          <span>Showcase</span>
         </Link>
-        <Link to="/player" className="player" activeClassName="active">
+        <Link to="/about" className="player" activeClassName="active">
           <Icon name="gear"/>
-          <span>Video</span>
+          <span>About</span>
         </Link>
-        <Link to="/frame/select" className="design" activeClassName="active">
+        <Link to="/contact" className="design" activeClassName="active">
           <Icon name="gear"/>
-          <span>Design</span>
-        </Link>
-        <Link to="/profile" className="profile" activeClassName="active">
-          <Icon name="gear"/>
-          <span>Profile</span>
+          <span>Contact</span>
         </Link>
       </nav>
     );

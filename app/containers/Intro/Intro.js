@@ -42,7 +42,14 @@ export default class Intro extends Component {
     return (
       <section className="intro">
         <Helmet title="Intro"/>
-        <p>Already have an account? <Link to="/profile">Sign in</Link></p>
+        <div className="content">
+          <div className="text">
+            <p>
+              
+              <Link to="/galleries">Galleries</Link>
+            </p>
+          </div>
+        </div>
       </section>
     );
   }
