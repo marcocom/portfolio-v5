@@ -1,86 +1,26 @@
 {
-  "name": "portfolio",
-  "description": "React Redux portfolio template",
-  "author": "marco comparato <marco@marcocomparato.com>",
+  "name": "portfolio-v5",
   "version": "0.9.0",
-  "private": true,
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/marcocom/portfolio-v5"
-  },
-  "homepage": "http://www.marcocomparato.com",
-  "keywords": [
-    "react",
-    "webpack",
-    "express",
-    "hot reloading",
-    "react-hot-reloader",
-    "redux",
-    "babel"
-  ],
+  "private": false,
+  "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "start": "better-npm-run webpack-dev-server",
-    "build": "npm run build-prod",
-    "build-dev": "webpack --define process.env.NODE_ENV='\"development\"' --config webpack.dev.config.js",
-    "build-prod": "webpack -p --config webpack.prod.config.js",
-    "deploy": "aws s3 sync ./dist/ s3://experiencemore-frontend-dev",
-    "deploy-prod": "aws s3 sync ./dist/ s3://experiencemore-frontend-prod-test",
-    "deploy-final-prod": "aws s3 sync ./dist/ s3://experiencemore-frontend-prod",
-    "dev-server": "better-npm-run webpack-dev-server",
-    "json": "better-npm-run json-server",
-    "test": "mocha --recursive --compilers js:babel-register --require babel-polyfill --require ignore-styles",
-    "test-watch": "npm test -- --watch"
-  },
-  "betterScripts": {
-    "webpack-dev-server": {
-      "command": "webpack-dev-server --inline --hot --history-api-fallback --host 0.0.0.0 --port 3000 --define process.env.NODE_ENV='\"development\"'"
-    },
-    "json-server": {
-      "command": "json-server --watch app-data.js --port 3004"
-    }
-  },
-  "babel": {
-    "presets": [
-      "es2015",
-      "react",
-      "stage-1"
-    ],
-    "plugins": [
-      "react-hot-loader/babel",
-      "transform-decorators-legacy"
-    ]
-  },
-  "dependencies": {
-    "babel-polyfill": "^6.20.0",
-    "babel-runtime": "^6.22.0",
-    "colr": "^1.2.2",
-    "fabric": "^1.7.1",
-    "html-webpack-plugin": "^2.24.1",
-    "modernizr-webpack-plugin": "^1.0.5",
-    "react": "^15.4.1",
-    "react-dom": "^15.4.1",
-    "react-dropzone": "^3.7.3",
-    "react-helmet": "^3.2.3",
-    "react-pinch-zoom-pan": "^1.1.0",
-    "react-redux": "^4.4.6",
-    "react-router": "^3.0.0",
-    "react-router-redux": "^4.0.7",
-    "react-router-scroll": "^0.4.1",
-    "react-tappable": "^0.8.4",
-    "redux": "^3.6.0",
-    "redux-undo": "^0.6.1",
-    "style-loader": "^0.13.1",
-    "superagent": "^3.3.0",
-    "uuid": "^3.0.1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "./node_modules/webpack-dashboard/bin/webpack-dashboard.js -t 'portfolio' -- ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "build": "rm -rf ./build && NODE_ENV=\"production\" ./node_modules/webpack/bin/webpack.js",
+    "lint-break-on-errors": "./node_modules/eslint/bin/eslint.js ./source/js ./webpack.config.js -f table --ext .js --ext .jsx",
+    "lint": "./node_modules/eslint/bin/eslint.js ./source/js ./webpack.config.js -f table --ext .js --ext .jsx || true",
+    "preview": "NODE_ENV=\"production\" ./node_modules/webpack-dashboard/bin/webpack-dashboard.js -t 'Preview Mode - React-Redux Boilerplate' -- ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "hook-add": "./node_modules/prepush/bin/cli.js install",
+    "hook-remove": "./node_modules/prepush/bin/cli.js remove"
   },
   "devDependencies": {
-    "autoprefixer-loader": "^3.2.0",
-    "babel-core": "^6.20.0",
-    "babel-eslint": "^7.1.1",
-    "babel-loader": "^6.2.9",
-    "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-plugin-react-transform": "^2.0.2",
+    "autoprefixer": "^6.5.3",
+    "babel-core": "^6.7.2",
+    "babel-eslint": "^7.1.0",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-syntax-decorators": "^6.13.0",
+    "babel-plugin-transform-class-properties": "^6.6.0",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-plugin-transform-react-display-name": "^6.8.0",
     "babel-plugin-transform-runtime": "^6.22.0",
@@ -100,15 +40,17 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.8.0",
-    "extract-text-webpack-plugin": "^1.0.1",
+    "extract-text-webpack-plugin": "^2.0.0-beta.4",
     "faker": "^3.1.0",
     "file-loader": "^0.9.0",
+    "html-webpack-plugin": "^2.24.1",
     "ignore-styles": "^5.0.1",
     "json-server": "^0.9.4",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
     "mocha": "^3.2.0",
     "node-sass": "^4.0.0",
+    "prepush": "^3.1.11",
     "raw-loader": "^0.5.1",
     "react-addons-test-utils": "^15.4.1",
     "react-hot-loader": "^3.0.0-beta.6",
@@ -118,12 +60,77 @@
     "redux-devtools": "^3.3.1",
     "redux-devtools-dock-monitor": "^1.1.1",
     "redux-devtools-log-monitor": "^1.1.1",
+    "redux-logger": "^2.7.4",
     "redux-freeze": "^0.1.5",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.14.0",
     "webpack-dashboard": "^0.3.0",
-    "webpack-dev-server": "^1.16.2",
+    "webpack-dev-server": "^2.1.0-beta.10"
     "whatwg-fetch": "^2.0.1"
-  }
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.20.0",
+    "babel-runtime": "^6.22.0",
+    "colr": "^1.2.2",
+    "es6-promise": "^3.1.2",
+    "fabric": "^1.7.1",
+    "html-webpack-plugin": "^2.24.1",
+    "immutable": "^3.8.1",
+    "isomorphic-fetch": "^2.2.1",
+    "modernizr-webpack-plugin": "^1.0.5",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1",
+    "react-helmet": "^3.2.3",
+    "react-redux": "^4.4.6",
+    "react-router": "^3.0.0",
+    "react-router-redux": "^4.0.7",
+    "react-router-scroll": "^0.4.1",
+    "react-tappable": "^0.8.4",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.0.1"
+    "redux-undo": "^0.6.1",
+    "style-loader": "^0.13.1",
+    "superagent": "^3.3.0",
+    "uuid": "^3.0.1"
+  },
+  "description": "React Redux portfolio template, using Webpack2 and Yarn....hopefully",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/marcocom/portfolio-v5"
+  },
+  "keywords": [
+    "react",
+    "webpack2",
+    "express",
+    "hot reloading",
+    "react-hot-reloader",
+    "redux",
+    "babel"
+  ],
+  "author": "marcocom <marco@marcocomparato.com>",
+  "homepage": "http://www.marcocomparato.com",
+  "betterScripts": {
+    "webpack-dev-server": {
+      "command": "webpack-dev-server --inline --hot --history-api-fallback --host 0.0.0.0 --port 3000 --define process.env.NODE_ENV='\"development\"'"
+    },
+    "json-server": {
+      "command": "json-server --watch app-data.js --port 3004"
+    }
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "react",
+      "stage-1"
+    ],
+    "plugins": [
+      "react-hot-loader/babel",
+      "transform-decorators-legacy"
+    ]
+  },
+  "prepush": [
+    "npm run lint-break-on-errors --silent"
+  ]
+
 }
