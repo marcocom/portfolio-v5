@@ -1,0 +1,23 @@
+@import '../../../less/vars.less';
+
+section.intro {
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  .images {
+    position: relative;
+    flex: 1;
+    .frame {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+    }
+  }
+  .text {
+    padding-top: 30px;
+  }
+}

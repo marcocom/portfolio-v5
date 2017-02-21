@@ -1,0 +1,26 @@
+@import 'vars.less';
+@import '../assets/fonts/open-sans-fontface-1.0.4/open-sans';
+
+
+body {
+  font-family: @font-main;
+
+  h1, h2, h3, h4, h5, h6, p {
+    color: @charcoal;
+    margin: 0;
+    padding: 0;
+    font-weight: 200;
+    line-height: 1.25;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  strong { font-weight: 400; }
+
+  p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 15px;
+    color: @gray;
+  }
+  a { text-decoration: none; }
+}

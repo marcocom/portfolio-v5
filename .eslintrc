@@ -49,6 +49,7 @@
     "react/no-danger": 0,
     "react/no-multi-comp": 0,
     "react/prefer-stateless-function": 0,
+    "react/require-default-props": 0,
     "react/self-closing-comp": 0,
     "spaced-comment": 0
   },

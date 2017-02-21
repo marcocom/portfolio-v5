@@ -1,8 +1,5 @@
 // http://webpack.github.io/docs/configuration.html
 // http://webpack.github.io/docs/webpack-dev-server.html
-const app_root = 'app'; // the app root folder: src, src_users, etc
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const webpack = require('webpack');
 const path = require('path');
@@ -15,10 +12,85 @@ const autoprefixer = require('autoprefixer');
 const nodeEnv = process.env.NODE_ENV || 'development';
 const isProduction = nodeEnv === 'production';
 
-const jsSourcePath = path.join(__dirname, './source/js');
+const jsSourcePath = path.join(__dirname, './src/js');
 const buildPath = path.join(__dirname, './build');
-const imgPath = path.join(__dirname, './source/assets/img');
-const sourcePath = path.join(__dirname, './source');
+const imgPath = path.join(__dirname, './src/assets/img');
+const cssPath = path.join(__dirname, './src/less');
+const sourcePath = path.join(__dirname, './src');
+
+const plugins = [
+  new webpack.optimize.CommonsChunkPlugin({
+    name: 'vendor',
+    minChunks: Infinity,
+    filename: 'vendor-[hash].js',
+  }),
+  new webpack.DefinePlugin({
+    'process.env': {
+      NODE_ENV: JSON.stringify(nodeEnv),
+    },
+  }),
+  new webpack.NamedModulesPlugin(),
+  new HtmlWebpackPlugin({
+    template: path.join(sourcePath, 'index.html'),
+    path: buildPath,
+    filename: 'index.html',
+  }),
+  new webpack.LoaderOptionsPlugin({
+    options: {
+      postcss: [
+        autoprefixer({
+          browsers: [
+            'last 3 version',
+            'ie >= 10',
+          ],
+        }),
+      ],
+      context: sourcePath,
+    },
+  }),
+  new ExtractTextPlugin('build/style/styles.css'),
+  /* olde
+   new CleanWebpackPlugin(['*'], {
+   root: __dirname + '/dist',
+   verbose: true,
+   dry: false, // true for simulation
+   }),
+   new HtmlWebpackPlugin({
+   template: __dirname + '/' + app_root + '/index.html',
+   filename: 'index.html',
+   inject: 'body',
+   }),
+   */
+];
+// Common rules
+const rules = [
+  {
+    test: /\.(js|jsx)$/,
+    loaders: ['babel-loader', 'eslint-loader'],
+    exclude: /node_modules/,
+  },
+  {
+    test: /\.less$/,
+    exclude: /node_modules/,
+    use: ExtractTextPlugin.extract({
+      fallback: 'style-loader',
+      use: ['css-loader', 'less-loader']
+    })
+  },
+  {
+    test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+    exclude: /node_modules/,
+    use: 'raw-loader',
+  },
+  {
+    test: /\.(eot|svg|ttf|woff|woff2)$/,
+    loader: 'file-loader',
+    query: {
+      name: 'build/assets/fonts/[name].[ext]'
+    }
+  }
+  
+];
 
 if (isProduction) {
   // Production plugins
@@ -48,6 +120,7 @@ if (isProduction) {
   );
 
   // Production rules
+  /*
   rules.push(
     {
       test: /\.scss$/,
@@ -57,6 +130,7 @@ if (isProduction) {
       }),
     }
   );
+  */
 } else {
   // Development plugins
   plugins.push(
@@ -65,12 +139,13 @@ if (isProduction) {
   );
 
   // Development rules
+  /*
   rules.push(
     {
       test: /\.scss$/,
       exclude: /node_modules/,
       use: [
-        'style-loader',
+        'less-loader',
         // Using source maps breaks urls in the CSS loader
         // https://github.com/webpack/css-loader/issues/232
         // This comment solves it, but breaks testing from a local network
@@ -82,18 +157,12 @@ if (isProduction) {
       ],
     }
   );
+  */
 }
 
 module.exports = {
-  app_root, // the app root folder, needed by the other webpack configs
   devtool: isProduction ? 'eval' : 'source-map', //was inline-source-map
   context: jsSourcePath,
-  entry: [
-    'webpack-dev-server/client?http://localhost:3000',
-    'webpack/hot/only-dev-server',
-    'babel-polyfill',
-    (__dirname + '/') + (app_root + '/index.js'),
-  ],
   entry: {
     js: './index.js',
     vendor: [
@@ -115,60 +184,8 @@ module.exports = {
     filename: 'app-[hash].js',
   },
   module: {
-    loaders: [
-      {
-        test: /\(.js|.jsx)$/,
-        loaders: ['babel-loader', 'eslint-loader'],
-        exclude: /node_modules/,
-      },
-      {
-        test: /\.less$/,
-        loader: 'style-loader!css!autoprefixer?browsers=last 2 version!less?outputStyle=expanded&sourceMap',
-        exclude: /node_modules/,
-      },
-      {
-        test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'url-loader',
-        query: {
-          limit: 10000,
-          mimetype: 'application/font-woff'
-        }
-      },
-      {
-        test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'url-loader',
-        query: {
-          limit: 10000,
-          mimetype: 'application/font-woff'
-        }
-      },
-      {
-        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'url-loader',
-        query: {
-          limit: 10000,
-          mimetype: 'application/octet-stream'
-        }
-      },
-      {
-        test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'file-loader'
-      },
-      {
-        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'raw-loader'
-      },
-      {
-        test: /([^\s]+(\.(jpg|png|gif|bmp))$)/,
-        loader: 'url-loader' ,
-        query: {
-          limit:10240,
-          name:'assets/[name]-[hash].[ext]'
-        }
-      }
-    ],
+    rules,
   },
-  progress: true,
   resolve: {
     extensions: ['.webpack-loader.js', '.web-loader.js', '.loader.js', '.json', '.js', '.jsx'],
     modules: [
@@ -199,48 +216,6 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: Infinity,
-      filename: 'vendor-[hash].js',
-    }),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify(nodeEnv),
-      },
-    }),
-    new webpack.NamedModulesPlugin(),
-    new HtmlWebpackPlugin({
-      template: path.join(sourcePath, 'index.html'),
-      path: buildPath,
-      filename: 'index.html',
-    }),
-    new webpack.LoaderOptionsPlugin({
-      options: {
-        postcss: [
-          autoprefixer({
-            browsers: [
-              'last 3 version',
-              'ie >= 10',
-            ],
-          }),
-        ],
-        context: sourcePath,
-      },
-    }),
-  
-    /* olde
-    new CleanWebpackPlugin(['*'], {
-      root: __dirname + '/dist',
-      verbose: true,
-      dry: false, // true for simulation
-    }),
-    new HtmlWebpackPlugin({
-      template: __dirname + '/' + app_root + '/index.html',
-      filename: 'index.html',
-      inject: 'body',
-    }),
-    */
-  ],
+  plugins: [...plugins],
 };
+
